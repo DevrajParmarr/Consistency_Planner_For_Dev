@@ -3,728 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudyFlow - Your Consistency Companion</title>
+    <title>Discipline Yourself Buddy</title>
     
-    <!-- PWA Meta Tags -->
-    <meta name="theme-color" content="#667eea">
-    <meta name="description" content="Track your daily tasks and build consistent study habits with StudyFlow">
-    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlN0dWR5RmxvdyAtIFlvdXIgQ29uc2lzdGVuY3kgQ29tcGFuaW9uIiwKICAic2hvcnRfbmFtZSI6ICJTdHVkeUZsb3ciLAogICJkZXNjcmlwdGlvbiI6ICJUcmFjayB5b3VyIGRhaWx5IHRhc2tzIGFuZCBidWlsZCBjb25zaXN0ZW50IHN0dWR5IGhhYml0cyIsCiAgInN0YXJ0X3VybCI6ICIvIiwKICAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjNjY3ZWVhIiwKICAidGhlbWVfY29sb3IiOiAiIzY2N2VlYSIsCiAgIm9yaWVudGF0aW9uIjogInBvcnRyYWl0IiwKICAiaWNvbnMiOiBbCiAgICB7CiAgICAgICJzcmMiOiAiZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxQSE4yWnlCM2FXUjBhRDBpTkRBd0lpQm9aV2xuYUhROUlqUXdNQ0lpSUhacFpYZENiM2c5SWpBZ01DQTBNREFnTkRBd0lpQjRiV3h1Y3owaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNQzl6ZG1jaVBnb2dJRHh5WldOMElIZHBaSFJvUFNJek9EUWlJR2hsYVdkb2REMGlNelEwSWlCbWFXeHNQU0lqTmpZM1pXVmhJaTgrQ2lBZ1BIUmxlSFFnZUQwaU1qQXdJaUI1UFNJeU1UQWlJSFJsZUhRdFlXNWphRzl5UFNKdGFXUmtiR1VpSUdadmJuUXRjMmw2WlQwaU5UQWlJR1pwYkd3OUluZG9hWFJsVWs9IiwKICAICAgInNpemVzIjogIjM4NHgzODQiLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIgogICAgfSwKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUIzYVdSMGFEMGlOVEV5SWlCb1pXbG5hSFE5SWpVeE1pSWdkbWxsZDBKdmVEMGlNQ0F3SURRME1pQTBORElpSUhodGJHNXpQU0pvZEhSd09pOHZkM2QzTG5jekxtOXlaeTh5TURBd0wzTjJaeUkrQ2lBZ1BISmxZM1FnZDJsa2RHZzlJalV4TWlJZ2FHVnBaMmgwUFNJME5ESWlJR1pwYkd3OUlpTTJOamRsWldGaUlpOCtDaUFnUEhSbGVIUWdlRDBpTWpVMklpQjVQU0k0TVNJZ2RHVjRkQzFoYm1Ob2IzSTlJbTFwWkdSc1pTSWdabTl1ZEMxemFYcGxQU0k0TUNJZ1ptbHNiRDBpZDJocGRHVmFVPT0iLAogICAgICAic2l6ZXMiOiAiNTEyeDUxMiIsCiAgICAgICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiCiAgICB9CiAgXQp9">
+   <link rel="stylesheet" href="styles.css">
     
-    <!-- iOS Splash Screen and Icons -->
-    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE4MCAxODAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHJlY3Qgd2lkdGg9IjE4MCIgaGVpZ2h0PSIxODAiIGZpbGw9IiM2NjdlZWEiLz4KICA8dGV4dCB4PSI5MCIgeT0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjY0IiBmaWxsPSJ3aGl0ZSI+8J+TsjwvdGV4dD4KPC9zdmc+">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="StudyFlow">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        /* Welcome Screen Styles */
-        .welcome-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
-        }
-
-        .welcome-overlay.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .welcome-content {
-            text-align: center;
-            color: white;
-            max-width: 800px;
-            padding: 40px;
-            animation: welcomeEntry 1.2s ease-out;
-        }
-
-        .welcome-logo {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            animation: logoFloat 3s ease-in-out infinite;
-        }
-
-        .welcome-title {
-            font-size: 3rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-            background: linear-gradient(45deg, #fff, #f0f8ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .welcome-subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 40px;
-            opacity: 0.9;
-        }
-
-        .motivation-section {
-            background: rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 30px;
-            margin: 30px 0;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-            animation: cardGlow 2s ease-in-out infinite alternate;
-        }
-
-        .motivation-quote {
-            font-size: 1.4rem;
-            font-style: italic;
-            margin-bottom: 20px;
-            line-height: 1.6;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
-        }
-
-        .geeta-section {
-            background: rgba(255,255,255,0.15);
-            border-radius: 20px;
-            padding: 30px;
-            margin: 30px 0;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.3);
-        }
-
-        .geeta-header {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: #ffd700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .sanskrit-text {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: #ffe4b5;
-            font-family: 'Times New Roman', serif;
-            line-height: 1.8;
-        }
-
-        .translation {
-            font-size: 1.1rem;
-            font-style: italic;
-            margin-bottom: 15px;
-            color: #f0f8ff;
-            line-height: 1.5;
-        }
-
-        .meaning {
-            font-size: 1rem;
-            color: #e6e6fa;
-            line-height: 1.6;
-            background: rgba(0,0,0,0.1);
-            padding: 15px;
-            border-radius: 10px;
-            border-left: 4px solid #ffd700;
-        }
-
-        .continue-btn {
-            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 30px;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .continue-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(0,0,0,0.4);
-        }
-
-        .continue-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
-        }
-
-        .continue-btn:hover::before {
-            left: 100%;
-        }
-
-        .daily-wisdom-card {
-            background: rgba(255,255,255,0.95);
-            border-radius: 15px;
-            padding: 25px;
-            margin: 20px 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            color: #333;
-        }
-
-        .wisdom-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-            color: #667eea;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .wisdom-content {
-            font-style: italic;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: #555;
-        }
-
-        /* PWA Install Banner */
-        .install-banner {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
-            color: white;
-            padding: 12px 20px;
-            text-align: center;
-            z-index: 1000;
-            transform: translateY(-100%);
-            transition: transform 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-
-        .install-banner.show {
-            transform: translateY(0);
-        }
-
-        .install-banner button {
-            background: rgba(255,255,255,0.2);
-            border: 1px solid rgba(255,255,255,0.3);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            margin-left: 10px;
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-        .install-banner .close-btn {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            color: white;
-            font-size: 18px;
-            cursor: pointer;
-            margin: 0;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            padding-top: 80px; /* Space for install banner */
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-            animation: slideDown 0.8s ease-out;
-        }
-
-        .logo {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: white;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-        }
-
-        .tagline {
-            color: rgba(255,255,255,0.9);
-            font-size: 1.2rem;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .stat-card {
-            background: rgba(255,255,255,0.95);
-            border-radius: 15px;
-            padding: 25px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: fadeInUp 0.6s ease-out;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #667eea;
-            margin-bottom: 10px;
-        }
-
-        .stat-label {
-            color: #666;
-            font-size: 1rem;
-        }
-
-        .main-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-
-        .panel {
-            background: rgba(255,255,255,0.95);
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .panel h2 {
-            color: #667eea;
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .task-input-section {
-            margin-bottom: 20px;
-        }
-
-        .input-group {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        input[type="text"], select {
-            flex: 1;
-            padding: 12px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: border-color 0.3s ease;
-        }
-
-        input[type="text"]:focus, select:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-
-        .btn {
-            padding: 12px 24px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        .btn:active {
-            transform: translateY(0);
-        }
-
-        .task-list {
-            max-height: 400px;
-            overflow-y: auto;
-        }
-
-        .task-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 15px;
-            margin-bottom: 10px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            border-left: 4px solid #667eea;
-            animation: slideInRight 0.4s ease-out;
-            transition: all 0.3s ease;
-        }
-
-        .task-item:hover {
-            background: #e9ecef;
-            transform: translateX(5px);
-        }
-
-        .task-info {
-            flex: 1;
-        }
-
-        .task-name {
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 5px;
-        }
-
-        .task-category {
-            font-size: 0.85rem;
-            color: #666;
-            background: #e3f2fd;
-            padding: 2px 8px;
-            border-radius: 12px;
-            display: inline-block;
-        }
-
-        .task-actions {
-            display: flex;
-            gap: 10px;
-        }
-
-        .btn-small {
-            padding: 8px 16px;
-            font-size: 14px;
-            border-radius: 6px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .btn-complete {
-            background: #28a745;
-            color: white;
-        }
-
-        .btn-complete:hover {
-            background: #218838;
-            transform: scale(1.05);
-        }
-
-        .btn-delete {
-            background: #dc3545;
-            color: white;
-        }
-
-        .btn-delete:hover {
-            background: #c82333;
-            transform: scale(1.05);
-        }
-
-        .task-completed {
-            opacity: 0.6;
-            text-decoration: line-through;
-            background: #d4edda !important;
-        }
-
-        .calendar-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 5px;
-            margin-top: 20px;
-        }
-
-        .calendar-day {
-            aspect-ratio: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .calendar-day.header {
-            background: #667eea;
-            color: white;
-            cursor: default;
-        }
-
-        .calendar-day.active {
-            background: #28a745;
-            color: white;
-            animation: pulse 0.6s ease-in-out;
-        }
-
-        .calendar-day.partial {
-            background: #ffc107;
-            color: #333;
-        }
-
-        .calendar-day.inactive {
-            background: #f8f9fa;
-            color: #999;
-        }
-
-        .calendar-day:not(.header):hover {
-            transform: scale(1.1);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 20px;
-            background: #e0e0e0;
-            border-radius: 10px;
-            overflow: hidden;
-            margin: 20px 0;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #28a745, #20c997);
-            border-radius: 10px;
-            transition: width 0.8s ease;
-            position: relative;
-        }
-
-        .progress-fill::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            animation: shimmer 2s infinite;
-        }
-
-        .streak-counter {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        .streak-number {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #ff6b6b;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-            animation: bounce 2s infinite;
-        }
-
-        .motivational-quote {
-            background: linear-gradient(135deg, #ff9a9e, #fecfef);
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            margin: 20px 0;
-            font-style: italic;
-            color: #333;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .floating-particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(255,255,255,0.6);
-            border-radius: 50%;
-            animation: float 6s infinite linear;
-        }
-
-        .celebration {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 4rem;
-            z-index: 1000;
-            animation: celebrate 1s ease-in-out;
-            pointer-events: none;
-        }
-
-        /* Notification Styles */
-        .notification {
-            position: fixed;
-            top: 100px;
-            right: 20px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 15px 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-            transform: translateX(400px);
-            transition: transform 0.3s ease;
-            z-index: 1001;
-        }
-
-        .notification.show {
-            transform: translateX(0);
-        }
-
-        /* Offline Indicator */
-        .offline-indicator {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background: #dc3545;
-            color: white;
-            padding: 10px 15px;
-            border-radius: 20px;
-            font-size: 14px;
-            transform: translateY(100px);
-            transition: transform 0.3s ease;
-            z-index: 1001;
-        }
-
-        .offline-indicator.show {
-            transform: translateY(0);
-        }
-
-        @keyframes welcomeEntry {
-            0% { transform: translateY(50px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
-        }
-
-        @keyframes logoFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        @keyframes cardGlow {
-            0% { box-shadow: 0 5px 20px rgba(255,255,255,0.1); }
-            100% { box-shadow: 0 5px 30px rgba(255,255,255,0.3); }
-        }
-
-        @keyframes slideDown {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        @keyframes slideInRight {
-            from { transform: translateX(30px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        @keyframes float {
-            0% { transform: translateY(100vh) rotate(0deg); }
-            100% { transform: translateY(-100px) rotate(360deg); }
-        }
-
-        @keyframes celebrate {
-            0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
-            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
-            100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
-        }
-
-        @media (max-width: 768px) {
-            .main-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .input-group {
-                flex-direction: column;
-            }
-
-            .container {
-                padding: 10px;
-                padding-top: 70px;
-            }
-        }
-    </style>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Turret+Road:wght@300;400;700&family=Space+Grotesk:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
+    <!-- Prism.js for Code Syntax Highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-dark.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+    <!-- Chart.js for Analytics Dashboard -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    
+       
 </head>
-<body>
-    <!-- PWA Install Banner -->
-    <div class="install-banner" id="installBanner">
-        📱 Install StudyFlow as an app for the best experience!
-        <button onclick="installApp()">Install</button>
-        <button class="close-btn" onclick="hideInstallBanner()">&times;</button>
+<body data-theme="dark">
+    <canvas id="starfield-canvas"></canvas>
+    <div class="loading-spinner" id="loadingSpinner"></div>
+
+    <div class="welcome-overlay" id="welcomeOverlay">
+        <div class="welcome-content">
+            <h1 class="welcome-title">DISCIPLINE: WORTH IT...</h1>
+            <p class="motivation-popup" id="motivationPopup">"The journey of a thousand miles begins with a single step."</p>
+        </div>
     </div>
 
-    <!-- Offline Indicator -->
-    <div class="offline-indicator" id="offlineIndicator">
-        📡 You're offline - data will sync when back online
-    </div>
 
-    <div class="floating-particles" id="particles"></div>
-    
+      
+
     <div class="container">
         <div class="header">
-            <div class="logo">📚 StudyFlow</div>
-            <div class="tagline">Your Personal Consistency Companion</div>
+            <button class="theme-toggle" id="themeToggle">🌙</button>
+            <div class="logo">🚀 Mission Control</div>
+            <div class="tagline">Take Control in your Hand</div>
+
+            
+            <div class="time-analysis-container" id="timeAnalysisContainer" >
+                    <h3>⏱️ YOUR FOCUS DISTRIBUTION
+                        
+                    </h3>
+                    <div id="timeAnalysis"></div>
+                </div>
         </div>
 
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-number" id="totalTasks">0</div>
-                <div class="stat-label">Total Tasks</div>
+                <div class="stat-label">Missions Logged</div>
             </div>
             <div class="stat-card">
                 <div class="stat-number" id="completedTasks">0</div>
@@ -740,596 +72,218 @@
             </div>
         </div>
 
+        <div class="info-grid">
+            <div class="info-card" id="lessonsTrigger">
+    <div class="info-header"><span>📡</span><h3>Daily Briefing</h3></div>
+    <p>Read daily intel on key subjects or test your skills in the simulator.</p>
+  
+</div>
+            <div class="info-card" id="bookQuoteTrigger">
+                <div class="info-header"><span>📚</span><h3>Library</h3></div>
+                <p>Access insights from foundational self-help and productivity texts.</p>
+            </div>
+          
+            <div class="info-card" id="achievementsTrigger">
+                <div class="info-header"><span>🏆</span><h3>Achievements</h3></div>
+                <p>View your earned badges and milestones!</p>
+            </div>
+
+      
+
+            <div class="info-card" id="forgeTrigger">
+    <div class="info-header"><span>🛠️</span><h3>The Forge</h3></div>
+    <p>Use components earned from missions to craft powerful upgrades.</p>
+</div>
+
+
+        </div>
+
         <div class="main-content">
             <div class="panel">
-                <h2>📝 Add New Task</h2>
-                <div class="task-input-section">
-                    <div class="input-group">
-                        <input type="text" id="taskInput" placeholder="Enter your task (e.g., Study Math for 2 hours)">
-                        <select id="categorySelect">
-                            <option value="study">📖 Study</option>
-                            <option value="exercise">💪 Exercise</option>
-                            <option value="reading">📚 Reading</option>
-                            <option value="project">🎯 Project</option>
-                            <option value="habit">⭐ Habit</option>
-                            <option value="other">🔧 Other</option>
-                        </select>
-                    </div>
-                    <button class="btn" onclick="addTask()">Add Task</button>
-                </div>
-                
-                <div class="motivational-quote" id="motivationalQuote">
-                    "Success is the sum of small efforts repeated day in and day out."
-                </div>
 
-                <h3>📋 Today's Tasks</h3>
+                           <div class="skill-cores-container">
+    <div class="skill-core" id="core-dsa">
+        <span class="core-icon">🔮</span>
+        <div class="core-details">
+            <span class="core-name">Algorithm Core</span>
+            <div class="core-level">Lvl 1</div>
+            <div class="core-progress-bar"><div class="core-progress-fill"></div></div>
+        </div>
+    </div>
+    <div class="skill-core" id="core-dev">
+        <span class="core-icon">🛠️</span>
+        <div class="core-details">
+            <span class="core-name">Development Core</span>
+            <div class="core-level">Lvl 1</div>
+            <div class="core-progress-bar"><div class="core-progress-fill"></div></div>
+        </div>
+    </div>
+    
+</div>
+
+                <h2>🛰️ Set New Mission</h2>
+                <div class="input-group">
+                    <input type="text" id="taskInput" placeholder="Enter mission...">
+                    <select id="categorySelect">
+                       
+                        <option value="DSA">DSA</option>
+                        <option value="Development">Development</option>
+                        <option value="project">Project</option>
+
+                        <option value="other">Other</option>
+                    </select>
+                    <select id="prioritySelect">
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
+                <button class="btn" onclick="addTask()">Add Mission</button>
+                
+                <div class="motivational-quote" id="motivationalQuote">"ReBuild it ..BRICK BY BRICK "</div>
+                <h3>📋 Today's Missions</h3>
                 <div class="task-list" id="taskList"></div>
             </div>
 
             <div class="panel">
-                <h2>📊 Progress Tracking</h2>
-                
-                <div class="streak-counter">
-                    <div>🔥 Current Streak</div>
-                    <div class="streak-number" id="streakDisplay">0</div>
-                    <div>consecutive days</div>
-                </div>
 
+              
+                <h2>📊 Progress Log</h2>
+                <div class="streak-counter">
+                    <div><span class="fire-icon" id="fireIcon">🔥</span> Current Streak</div>
+                    <div class="streak-number" id="streakDisplay">0</div>
+                </div>
                 <div class="progress-bar">
                     <div class="progress-fill" id="progressFill" style="width: 0%"></div>
                 </div>
-                <div style="text-align: center; margin-bottom: 20px;">
-                    <span id="progressText">0 of 0 tasks completed today</span>
+                <h3>🗓️ Star Chart</h3>
+<div class="starmap-container" id="starmapContainer">
+    <svg id="starmap-svg"></svg>
+    <div class="starmap-month-label" id="starmapMonthLabel"></div>
+</div>               
+                <div class="mission-insights-container">
+                    <h3>🚀 Mission Insights</h3>
+                    <div id="missionInsight" class="insight-text">Calculating...</div>
                 </div>
+                <button class="btn" id="weeklyReportTrigger">Weekly Report</button>
+                <button class="btn" id="analyticsTrigger">Analytics Dashboard</button>
+              
+<button class="btn" id="archiveTrigger">Mission Archives</button>
+<button class="btn" id="monthlyReportTrigger">Monthly Debrief</button>
 
-                <h3>🗓️ Activity Calendar</h3>
-                <div class="calendar-grid" id="calendar"></div>
+
+
+<div class="modal-overlay hidden" id="archiveModal">
+    <div class="modal-content">
+        <div class="modal-header"><h2>🛰️ Mission Archives (Last 7 Days)</h2><button class="close-btn" id="closeArchiveModal">&times;</button></div>
+        <div class="modal-body" id="archiveModalBody">
+            
+            </div>
+    </div>
+</div>
+
+<div class="modal-overlay hidden" id="monthlyReportModal">
+    <div class="modal-content">
+        <div class="modal-header"><h2>🗓️ Monthly Debrief</h2><button class="close-btn" id="closeMonthlyReportModal">&times;</button></div>
+        <div class="modal-body" id="monthlyReportBody">
+            </div>
+    </div>
+</div>
+
+
+
+                
             </div>
         </div>
     </div>
 
-    <script>
-        // PWA Variables
-        let deferredPrompt;
-        let isAppInstalled = false;
+    <!-- Modals -->
 
-        // App state
-        let tasks = [];
-        let completionHistory = {};
-        let currentStreak = 0;
+  
+    <div class="modal-overlay hidden" id="lessonsModal">
+        <div class="modal-content">
+            <div class="modal-header"><h2>📡 Daily Briefing</h2><button class="close-btn" id="closeLessonsModal">&times;</button></div>
+            <div class="modal-body" id="lessonsModalBody"></div>
+            <div class="quiz-container" id="quizContainer"></div>
+        </div>
+    </div>
 
-        // Motivational quotes
-        const quotes = [
-            "Success is the sum of small efforts repeated day in and day out.",
-            "Discipline is choosing between what you want now and what you want most.",
-            "The secret of getting ahead is getting started.",
-            "Don't watch the clock; do what it does. Keep going.",
-            "Consistency is key. If you can't be consistent, you can't be anything.",
-            "Small daily improvements over time lead to stunning results.",
-            "Excellence is not a skill, it's an attitude.",
-            "The future depends on what you do today."
-        ];
-
-        // PWA Installation
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            showInstallBanner();
-        });
-
-        window.addEventListener('appinstalled', () => {
-            isAppInstalled = true;
-            hideInstallBanner();
-            showNotification('🎉 StudyFlow installed successfully!');
-        });
-
-        function showInstallBanner() {
-            if (!isAppInstalled) {
-                document.getElementById('installBanner').classList.add('show');
-            }
-        }
-
-        function hideInstallBanner() {
-            document.getElementById('installBanner').classList.remove('show');
-        }
-
-        async function installApp() {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                const result = await deferredPrompt.userChoice;
-                if (result.outcome === 'accepted') {
-                    console.log('User accepted the install prompt');
-                }
-                deferredPrompt = null;
-                hideInstallBanner();
-            }
-        }
-
-        // Service Worker Registration
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                const swCode = `
-                    const CACHE_NAME = 'studyflow-v1';
-                    const urlsToCache = [
-                        '/',
-                        '/index.html'
-                    ];
-
-                    self.addEventListener('install', (event) => {
-                        event.waitUntil(
-                            caches.open(CACHE_NAME)
-                                .then((cache) => cache.addAll(urlsToCache))
-                        );
-                    });
-
-                    self.addEventListener('fetch', (event) => {
-                        event.respondWith(
-                            caches.match(event.request)
-                                .then((response) => {
-                                    if (response) {
-                                        return response;
-                                    }
-                                    return fetch(event.request);
-                                })
-                        );
-                    });
-                `;
-                
-                const blob = new Blob([swCode], { type: 'application/javascript' });
-                const swUrl = URL.createObjectURL(blob);
-                
-                navigator.serviceWorker.register(swUrl)
-                    .then((registration) => {
-                        console.log('SW registered:', registration);
-                    })
-                    .catch((error) => {
-                        console.log('SW registration failed:', error);
-                    });
-            });
-        }
-
-        // Online/Offline Status
-        window.addEventListener('online', () => {
-            hideOfflineIndicator();
-            showNotification('🌐 Back online! Data synced.');
-        });
-
-        window.addEventListener('offline', () => {
-            showOfflineIndicator();
-        });
-
-        function showOfflineIndicator() {
-            document.getElementById('offlineIndicator').classList.add('show');
-        }
-
-        function hideOfflineIndicator() {
-            document.getElementById('offlineIndicator').classList.remove('show');
-        }
-
-        // Notifications
-        function showNotification(message) {
-            const notification = document.createElement('div');
-            notification.className = 'notification';
-            notification.textContent = message;
-            document.body.appendChild(notification);
-            
-            setTimeout(() => notification.classList.add('show'), 100);
-            
-            setTimeout(() => {
-                notification.classList.remove('show');
-                setTimeout(() => document.body.removeChild(notification), 300);
-            }, 3000);
-        }
-
-        // Request notification permission
-        function requestNotificationPermission() {
-            if ('Notification' in window && navigator.serviceWorker) {
-                Notification.requestPermission().then((permission) => {
-                    if (permission === 'granted') {
-                        console.log('Notification permission granted');
-                    }
-                });
-            }
-        }
-
-        // Send daily reminder notification
-        function scheduleDailyReminder() {
-            if ('Notification' in window && Notification.permission === 'granted') {
-                const now = new Date();
-                const reminder = new Date();
-                reminder.setHours(9, 0, 0, 0); // 9 AM reminder
-                
-                if (reminder <= now) {
-                    reminder.setDate(reminder.getDate() + 1);
-                }
-                
-                const timeout = reminder.getTime() - now.getTime();
-                
-                setTimeout(() => {
-                    new Notification('StudyFlow Reminder', {
-                        body: 'Time to check your daily tasks and keep your streak going! 🔥',
-                        icon: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE4MCAxODAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHJlY3Qgd2lkdGg9IjE4MCIgaGVpZ2h0PSIxODAiIGZpbGw9IiM2NjdlZWEiLz4KICA8dGV4dCB4PSI5MCIgeT0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjY0IiBmaWxsPSJ3aGl0ZSI+8J+TsjwvdGV4dD4KPC9zdmc+',
-                        badge: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIHZpZXdCb3g9IjAgMCA3MiA3MiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIGZpbGw9IiM2NjdlZWEiLz4KICA8dGV4dCB4PSIzNiIgeT0iNDQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMzIiIGZpbGw9IndoaXRlIj7wn5OyPC90ZXh0Pgo8L3N2Zz4='
-                    });
-                    scheduleDailyReminder(); // Schedule next day's reminder
-                }, timeout);
-            }
-        }
-
-        // Initialize app
-        function init() {
-            loadData();
-            updateStats();
-            renderTasks();
-            renderCalendar();
-            createParticles();
-            showRandomQuote();
-            requestNotificationPermission();
-            scheduleDailyReminder();
-            
-            // Check if offline
-            if (!navigator.onLine) {
-                showOfflineIndicator();
-            }
-            
-            // Auto-save every 30 seconds
-            setInterval(saveData, 30000);
-            
-            // Show install banner after 3 seconds if not installed
-            setTimeout(() => {
-                if (!isAppInstalled && deferredPrompt) {
-                    showInstallBanner();
-                }
-            }, 3000);
-        }
-
-        // Add new task
-        function addTask() {
-            const taskInput = document.getElementById('taskInput');
-            const categorySelect = document.getElementById('categorySelect');
-            
-            if (!taskInput.value.trim()) return;
-
-            const task = {
-                id: Date.now(),
-                name: taskInput.value.trim(),
-                category: categorySelect.value,
-                completed: false,
-                createdAt: new Date().toDateString()
-            };
-
-            tasks.push(task);
-            taskInput.value = '';
-            
-            renderTasks();
-            updateStats();
-            saveData();
-            
-            // Add entrance animation
-            const taskItems = document.querySelectorAll('.task-item');
-            const lastTask = taskItems[taskItems.length - 1];
-            if (lastTask) {
-                lastTask.style.animation = 'slideInRight 0.4s ease-out';
-            }
-        }
-
-        // Complete task
-        function completeTask(taskId) {
-            const task = tasks.find(t => t.id === taskId);
-            if (task) {
-                task.completed = !task.completed;
-                renderTasks();
-                updateStats();
-                saveData();
-                
-                if (task.completed) {
-                    showCelebration();
-                    updateStreak();
-                    
-                    // Send notification for task completion
-                    if ('Notification' in window && Notification.permission === 'granted') {
-                        new Notification('Task Completed! 🎉', {
-                            body: `Great job completing: ${task.name}`,
-                            icon: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE4MCAxODAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjE4MCIgaGVpZ2h0PSIxODAiIGZpbGw9IiM2NjdlZWEiLz48dGV4dCB4PSI5MCIgeT0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjY0IiBmaWxsPSJ3aGl0ZSI+8J+TsjwvdGV4dD48L3N2Zz4='
-                        });
-                    }
-                }
-            }
-        }
-
-        // Delete task
-        function deleteTask(taskId) {
-            tasks = tasks.filter(t => t.id !== taskId);
-            renderTasks();
-            updateStats();
-            saveData();
-        }
-
-        // Render tasks
-        function renderTasks() {
-            const taskList = document.getElementById('taskList');
-            const today = new Date().toDateString();
-            const todayTasks = tasks.filter(t => t.createdAt === today);
-
-            taskList.innerHTML = todayTasks.map(task => `
-                <div class="task-item ${task.completed ? 'task-completed' : ''}">
-                    <div class="task-info">
-                        <div class="task-name">${task.name}</div>
-                        <div class="task-category">${getCategoryIcon(task.category)} ${task.category}</div>
-                    </div>
-                    <div class="task-actions">
-                        <button class="btn-small btn-complete" onclick="completeTask(${task.id})">
-                            ${task.completed ? '✅' : '⭕'}
-                        </button>
-                        <button class="btn-small btn-delete" onclick="deleteTask(${task.id})">🗑️</button>
-                    </div>
+    <div class="modal-overlay hidden" id="bookQuoteModal">
+    <div class="modal-content">
+        <div class="modal-header"><h2>📚 Library</h2><button class="close-btn" id="closeBookQuoteModal">&times;</button></div>
+        <div class="modal-body" id="bookQuoteModalBody"></div>
+    </div>
+</div>
+    
+    <div class="modal-overlay hidden" id="constellationModal">
+        <div class="modal-content">
+            <div class="modal-header"><h2>🌌 Constellation Guide</h2><button class="close-btn" id="closeConstellationModal">&times;</button></div>
+            <div class="modal-body" id="constellationModalBody"></div>
+        </div>
+    </div>
+    <div class="modal-overlay hidden" id="focus-timer-modal">
+        <div class="modal-content">
+            <div class="modal-header"><h2>⏱️ Focus Mode Engaged</h2><button class="close-btn" id="closeTimerModal">&times;</button></div>
+            <div class="modal-body">
+                <h3 class="timer-mission-name" id="timerMissionName"></h3>
+                <div class="timer-display">
+    <div class="hourglass">
+        <div class="sand-upper"></div>
+        <div class="sand-lower"></div>
+        <div class="sand-stream"></div>
+    </div>
+    <div class="timer-text" id="timerText">00:00</div>
+</div>
+                <div class="timer-controls">
+                    <button class="btn" id="timerControlBtn">Pause</button>
+                    <button class="btn" id="stopTimerBtn">Stop & Save</button>
                 </div>
-            `).join('');
-        }
+            </div>
+        </div>
+    </div>
+    <div class="modal-overlay hidden" id="weeklyReportModal">
+        <div class="modal-content">
+            <div class="modal-header"><h2>📅 Weekly Mission Report</h2><button class="close-btn" id="closeWeeklyReportModal">&times;</button></div>
+            <div class="modal-body" id="weeklyReportBody"></div>
+        </div>
+    </div>
+    <div class="modal-overlay hidden" id="analyticsModal">
+        <div class="modal-content">
+            <div class="modal-header"><h2>📊 Analytics Dashboard</h2><button class="close-btn" id="closeAnalyticsModal">&times;</button></div>
+            <div class="modal-body">
+                <canvas id="completionChart" style="max-height: 300px; margin-bottom: 20px;"></canvas>
+                <canvas id="categoryChart" style="max-height: 300px;"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="modal-overlay hidden" id="achievementsModal">
+        <div class="modal-content">
+            <div class="modal-header"><h2>🏆 Achievements</h2><button class="close-btn" id="closeAchievementsModal">&times;</button></div>
+            <div class="modal-body" id="achievementsModalBody"></div>
+        </div>
+    </div>
 
-        // Get category icon
-        function getCategoryIcon(category) {
-            const icons = {
-                study: '📖',
-                exercise: '💪',
-                reading: '📚',
-                project: '🎯',
-                habit: '⭐',
-                other: '🔧'
-            };
-            return icons[category] || '📝';
-        }
+    <div class="modal-overlay hidden" id="forgeModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>🛠️ The Forge</h2>
+            <button class="close-btn" id="closeForgeModal">&times;</button>
+        </div>
+        <div class="modal-body" id="forgeBody">
+            <div class="inventory-display" id="inventoryDisplay">
+                </div>
+            <hr>
+            <h4>Available Blueprints:</h4>
+            <div class="recipe-grid" id="recipeGrid">
+                </div>
+        </div>
+    </div>
+</div>
 
-        // Update statistics
-        function updateStats() {
-            const today = new Date().toDateString();
-            const todayTasks = tasks.filter(t => t.createdAt === today);
-            const completedToday = todayTasks.filter(t => t.completed).length;
-            const totalToday = todayTasks.length;
-            const completionRate = totalToday > 0 ? Math.round((completedToday / totalToday) * 100) : 0;
 
-            document.getElementById('totalTasks').textContent = tasks.length;
-            document.getElementById('completedTasks').textContent = completedToday;
-            document.getElementById('currentStreak').textContent = currentStreak;
-            document.getElementById('completionRate').textContent = completionRate + '%';
-            document.getElementById('streakDisplay').textContent = currentStreak;
-            
-            // Update progress bar
-            const progressFill = document.getElementById('progressFill');
-            const progressText = document.getElementById('progressText');
-            progressFill.style.width = completionRate + '%';
-            progressText.textContent = `${completedToday} of ${totalToday} tasks completed today`;
-        }
 
-        // Update streak
-        function updateStreak() {
-            const today = new Date().toDateString();
-            if (!completionHistory[today]) {
-                completionHistory[today] = true;
-                calculateStreak();
-                renderCalendar();
-                
-                // Celebrate streak milestones
-                if (currentStreak > 0 && currentStreak % 7 === 0) {
-                    showNotification(`🔥 Amazing! ${currentStreak} day streak! Keep it up!`);
-                } else if (currentStreak === 1) {
-                    showNotification('🎯 Great start! Day 1 of your streak!');
-                }
-            }
-        }
+      <script src="script.js"></script>
 
-        // Calculate streak
-        function calculateStreak() {
-            let streak = 0;
-            const today = new Date();
-            
-            for (let i = 0; i < 365; i++) {
-                const date = new Date(today);
-                date.setDate(date.getDate() - i);
-                const dateStr = date.toDateString();
-                
-                if (completionHistory[dateStr]) {
-                    streak++;
-                } else {
-                    break;
-                }
-            }
-            
-            currentStreak = streak;
-        }
-
-        // Render calendar
-        function renderCalendar() {
-            const calendar = document.getElementById('calendar');
-            const today = new Date();
-            const firstDay = new Date(today.getFullYear(), today.getMonth(), 1);
-            const lastDay = new Date(today.getFullYear(), today.getMonth() + 1, 0);
-            
-            // Day headers
-            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-            let calendarHTML = days.map(day => 
-                `<div class="calendar-day header">${day}</div>`
-            ).join('');
-            
-            // Empty cells for days before month start
-            for (let i = 0; i < firstDay.getDay(); i++) {
-                calendarHTML += '<div class="calendar-day"></div>';
-            }
-            
-            // Days of the month
-            for (let day = 1; day <= lastDay.getDate(); day++) {
-                const date = new Date(today.getFullYear(), today.getMonth(), day);
-                const dateStr = date.toDateString();
-                const isToday = dateStr === today.toDateString();
-                const hasActivity = completionHistory[dateStr];
-                
-                let className = 'calendar-day';
-                if (hasActivity) className += ' active';
-                else if (date < today) className += ' inactive';
-                
-                calendarHTML += `<div class="${className}" title="${dateStr}">${day}</div>`;
-            }
-            
-            calendar.innerHTML = calendarHTML;
-        }
-
-        // Show celebration
-        function showCelebration() {
-            const celebration = document.createElement('div');
-            celebration.className = 'celebration';
-            celebration.textContent = ['🎉', '🎊', '✨', '🌟', '💫'][Math.floor(Math.random() * 5)];
-            document.body.appendChild(celebration);
-            
-            setTimeout(() => {
-                document.body.removeChild(celebration);
-            }, 1000);
-        }
-
-        // Create floating particles
-        function createParticles() {
-            const particles = document.getElementById('particles');
-            
-            for (let i = 0; i < 20; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 6 + 's';
-                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
-                particles.appendChild(particle);
-            }
-        }
-
-        // Show random motivational quote
-        function showRandomQuote() {
-            const quoteElement = document.getElementById('motivationalQuote');
-            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-            quoteElement.textContent = randomQuote;
-            
-            // Change quote every 30 seconds
-            setTimeout(showRandomQuote, 30000);
-        }
-
-        // Save data with better error handling
-        function saveData() {
-            try {
-                const data = {
-                    tasks,
-                    completionHistory,
-                    currentStreak,
-                    lastSaved: new Date().toISOString()
-                };
-                
-                // For now, we'll simulate saving to local storage
-                // In a real deployment, this would sync to a backend
-                if (typeof Storage !== 'undefined') {
-                    localStorage.setItem('studyflow_data', JSON.stringify(data));
-                }
-                
-                console.log('Data saved successfully:', data);
-            } catch (error) {
-                console.error('Failed to save data:', error);
-                showNotification('⚠️ Failed to save data. Changes may be lost.');
-            }
-        }
-
-        // Load data with better error handling
-        function loadData() {
-            try {
-                if (typeof Storage !== 'undefined') {
-                    const savedData = localStorage.getItem('studyflow_data');
-                    if (savedData) {
-                        const data = JSON.parse(savedData);
-                        tasks = data.tasks || [];
-                        completionHistory = data.completionHistory || {};
-                        currentStreak = data.currentStreak || 0;
-                        console.log('Data loaded successfully:', data);
-                        return;
-                    }
-                }
-                
-                // Initialize with empty data if nothing saved
-                tasks = [];
-                completionHistory = {};
-                currentStreak = 0;
-                console.log('Initialized with empty data');
-            } catch (error) {
-                console.error('Failed to load data:', error);
-                // Initialize with empty data on error
-                tasks = [];
-                completionHistory = {};
-                currentStreak = 0;
-                showNotification('⚠️ Failed to load saved data. Starting fresh.');
-            }
-        }
-
-        // Export data for backup
-        function exportData() {
-            const data = {
-                tasks,
-                completionHistory,
-                currentStreak,
-                exportDate: new Date().toISOString()
-            };
-            
-            const dataStr = JSON.stringify(data, null, 2);
-            const dataBlob = new Blob([dataStr], { type: 'application/json' });
-            const url = URL.createObjectURL(dataBlob);
-            
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = `studyflow-backup-${new Date().toISOString().split('T')[0]}.json`;
-            link.click();
-            
-            URL.revokeObjectURL(url);
-            showNotification('📤 Data exported successfully!');
-        }
-
-        // Handle Enter key for task input
-        document.addEventListener('DOMContentLoaded', function() {
-            const taskInput = document.getElementById('taskInput');
-            if (taskInput) {
-                taskInput.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        addTask();
-                    }
-                });
-            }
-        });
-
-        // Handle app lifecycle events
-        document.addEventListener('visibilitychange', function() {
-            if (document.visibilityState === 'visible') {
-                // App became visible, refresh data
-                updateStats();
-                renderCalendar();
-            } else {
-                // App became hidden, save data
-                saveData();
-            }
-        });
-
-        // Handle beforeunload to save data
-        window.addEventListener('beforeunload', function() {
-            saveData();
-        });
-
-        // Add keyboard shortcuts
-        document.addEventListener('keydown', function(e) {
-            // Ctrl/Cmd + S to save/export data
-            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
-                e.preventDefault();
-                exportData();
-            }
-            
-            // Ctrl/Cmd + N to add new task
-            if ((e.ctrlKey || e.metaKey) && e.key === 'n') {
-                e.preventDefault();
-                document.getElementById('taskInput').focus();
-            }
-        });
-
-        // Initialize the app when page loads
-        window.addEventListener('load', init);
-    </script>
+ 
 </body>
 </html>
